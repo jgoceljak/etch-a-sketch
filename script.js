@@ -1,9 +1,11 @@
 
 let selectedColor = "black"
+let boardSize = 16;
 
 
 function createBoard(size) {
     pixelNumber = 0;
+    boardSize = size;
 
     const container = document.querySelector(".container")
 
@@ -22,6 +24,14 @@ function createBoard(size) {
     }
 }
 
+function clearBoard(size) {
+    for (let i = 0; i < size*size; i++){
+        let currentPixel = document.querySelector("#p" + i)
+        currentPixel.setAttribute('style', 'background-color: white')
+    }
+    return;
+}
+
 function colorPixel(pixel,selectedColor) {
     let id = String(pixel)
     let color = selectedColor
@@ -30,7 +40,7 @@ function colorPixel(pixel,selectedColor) {
     return
 }
 
-createBoard(16);
+createBoard(boardSize);
 
 const board = document.querySelector(".container")
 board.addEventListener('click', (event) => {
@@ -41,6 +51,19 @@ board.addEventListener('click', (event) => {
     colorPixel(pixelID, selectedColor)
 
 })
+
+const menu = document.querySelector(".menu")
+menu.addEventListener('click', (event) => {
+    let clickedButton = event.target.className
+    switch(clickedButton) {
+        case 'clear':
+          clearBoard(boardSize)
+          break;
+        default:
+          break;
+      }
+})
+
 
 
 
