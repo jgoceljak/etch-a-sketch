@@ -14,13 +14,15 @@ body {
 
 .tool {
     display:flex;
-    gap: 80px;
 }
 
 .menu {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    padding-right: 40px;
+    padding-left: 40px;
+    background-color: rgb(115, 146, 231);
 }
 .container {
     height: 800px;
@@ -37,6 +39,7 @@ body {
 }
 .pixel {
     border-style: solid;
+    border-color: gray;
     border-width: 1px;
     flex: 1;
 }

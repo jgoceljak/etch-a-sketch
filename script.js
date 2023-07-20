@@ -1,6 +1,10 @@
 
-let selectedColor = "black"
+let selectedColor = "red"
 let boardSize = 16;
+
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
 
 
 function createBoard(size) {
@@ -47,12 +51,23 @@ function colorPixel(pixel,selectedColor) {
     return
 }
 
-createBoard(boardSize);
 
 const board = document.querySelector(".container")
 board.addEventListener('click', (event) => {
     const isButton = event.target.nodeName === 'BUTTON';
 
+    let pixelID = event.target.id
+    selectedColor = document.getElementById("colorChoice").value; 
+    colorPixel(pixelID, selectedColor)
+
+})
+
+board.addEventListener('mouseover', (event) => {
+    const isButton = event.target.nodeName === 'BUTTON';
+    if (!mouseDown) {
+        console.log(mouseDown)
+        return;
+    }
     let pixelID = event.target.id
     selectedColor = document.getElementById("colorChoice").value; 
     colorPixel(pixelID, selectedColor)
@@ -81,7 +96,7 @@ slider.oninput = function () {
     createBoard(boardSize)
 }
 
-
+createBoard(boardSize);
 
 
 
