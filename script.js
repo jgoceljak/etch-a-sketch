@@ -48,6 +48,7 @@ board.addEventListener('click', (event) => {
 
     let pixelID = event.target.id
     console.log(pixelID)
+    selectedColor = document.getElementById("colorChoice").value; 
     colorPixel(pixelID, selectedColor)
 
 })
@@ -63,6 +64,7 @@ menu.addEventListener('click', (event) => {
           break;
       }
 })
+
 
 
 

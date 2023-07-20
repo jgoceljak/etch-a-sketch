@@ -16,6 +16,12 @@ body {
     display:flex;
     gap: 80px;
 }
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
 .container {
     height: 800px;
     width: 800px;
