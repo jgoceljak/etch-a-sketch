@@ -1,8 +1,9 @@
 
 let selectedColor = "red"
 let boardSize = 16;
-
+eraserMode = false;
 let mouseDown = false
+
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
@@ -44,11 +45,18 @@ function removeBoard(size) {
 }
 
 function colorPixel(pixel,selectedColor) {
+    if (!eraserMode) {
     let id = String(pixel)
     let color = selectedColor
     let currentPixel = document.querySelector("#" + id)
     currentPixel.setAttribute('style', 'background-color: ' + color + ';')
-    return
+    return;
+    } else {
+        let id = String(pixel)
+        let color = "white"
+        let currentPixel = document.querySelector("#" + id)
+        currentPixel.setAttribute('style', 'background-color: ' + color + ';')
+    }
 }
 
 
@@ -65,7 +73,6 @@ board.addEventListener('click', (event) => {
 board.addEventListener('mouseover', (event) => {
     const isButton = event.target.nodeName === 'BUTTON';
     if (!mouseDown) {
-        console.log(mouseDown)
         return;
     }
     let pixelID = event.target.id
@@ -85,6 +92,16 @@ menu.addEventListener('click', (event) => {
           break;
       }
 })
+
+var checkbox = document.querySelector(".eraserbtn");
+
+checkbox.addEventListener('change', function() {
+  if (this.checked) {
+    eraserMode = true;
+  } else {
+    eraserMode = false
+  }
+});
 
 const slider = document.querySelector('.sizeslider')
 const sliderDisplay = document.querySelector('.sliderdisplay')
