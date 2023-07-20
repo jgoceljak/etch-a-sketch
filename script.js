@@ -32,6 +32,13 @@ function clearBoard(size) {
     return;
 }
 
+function removeBoard(size) {
+    var board = document.querySelector('.container');
+    while ( board.firstChild ) board.removeChild( board.firstChild );
+    pixelNumber = 0;
+    return;
+}
+
 function colorPixel(pixel,selectedColor) {
     let id = String(pixel)
     let color = selectedColor
@@ -47,7 +54,6 @@ board.addEventListener('click', (event) => {
     const isButton = event.target.nodeName === 'BUTTON';
 
     let pixelID = event.target.id
-    console.log(pixelID)
     selectedColor = document.getElementById("colorChoice").value; 
     colorPixel(pixelID, selectedColor)
 
@@ -64,6 +70,16 @@ menu.addEventListener('click', (event) => {
           break;
       }
 })
+
+const slider = document.querySelector('.sizeslider')
+const sliderDisplay = document.querySelector('.sliderdisplay')
+
+slider.oninput = function () {
+    sliderDisplay.innerHTML = slider.value
+    removeBoard(boardSize)
+    boardSize = slider.value
+    createBoard(boardSize)
+}
 
 
 
