@@ -10,7 +10,7 @@ body {
 
 .title {
     margin-top: 5%;
-    font-size: 36px;
+    font-size: 42px;
 }
 
 .tool {
@@ -75,7 +75,7 @@ input.sizeslider {
 
 .pixel {
     border-style: solid;
-    border-color: gray;
+    border-color: rgb(165, 165, 165);
     border-width: 1px;
     background-color: white;
     flex: 1;
